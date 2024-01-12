@@ -11,10 +11,19 @@ export default async function View({
   searchParams: { [key: string]: string };
 }) {
   console.log("Starting view render...");
-  const options = { method: "GET", headers: { accept: "application/json" } };
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      "user-agent":
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+      authority: "www.united.com",
+      "accept-language": "en-US",
+    },
+  };
 
   const tokenResponse = await fetch(TOKEN_URL, options);
-  console.log("Fetched something...", tokenResponse.text());
+  console.log("Fetched something...");
   const tokenJson = await tokenResponse.json();
   const hash = tokenJson.data.token.hash;
   console.log("Fetched token...", hash);
