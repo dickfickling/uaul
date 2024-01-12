@@ -14,6 +14,7 @@ export default async function View({
   const options = { method: "GET", headers: { accept: "application/json" } };
 
   const tokenResponse = await fetch(TOKEN_URL, options);
+  console.log("Fetched something...", tokenResponse.text());
   const tokenJson = await tokenResponse.json();
   const hash = tokenJson.data.token.hash;
   console.log("Fetched token...", hash);
