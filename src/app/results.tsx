@@ -26,6 +26,9 @@ export default function Results({ data }: { data: UpgradeData }) {
                     </div>
                   );
                 })}
+                {data.front.cleared.length === 0 && (
+                  <div className="p-4 italic opacity-80">(empty)</div>
+                )}
               </div>
               <div>
                 <h3 className="mb-4 text-center text-lg">Standby</h3>
@@ -66,6 +69,9 @@ export default function Results({ data }: { data: UpgradeData }) {
                     </div>
                   );
                 })}
+                {data.middle.cleared.length === 0 && (
+                  <div className="p-4 italic opacity-80">(empty)</div>
+                )}
               </div>
               <div>
                 <h3 className="mb-4 text-center text-lg">Standby</h3>
