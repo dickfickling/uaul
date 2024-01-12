@@ -13,12 +13,15 @@ export default function Results({ data }: { data: UpgradeData }) {
               <div>{data.pbts[0].booked} booked</div>
               <div>{data.checkInSummaries[0].total} checked in</div>
             </div>
-            <div className="mt-16 grid gap-4 rounded-md border border-white/20 pt-6 sm:grid-cols-2">
+            <div className="mt-16 grid gap-4 rounded-md border border-blue-200 pt-6 shadow-lg sm:grid-cols-2 dark:border-white/20">
               <div>
                 <h3 className="mb-4 text-center text-lg">Cleared</h3>
                 {data.front.cleared.map((passenger, i) => {
                   return (
-                    <div className="rounded-sm p-4 even:bg-black/50" key={i}>
+                    <div
+                      className="rounded-sm p-4 even:bg-blue-100 even:dark:bg-black/50"
+                      key={i}
+                    >
                       <p>
                         {passenger.passengerName}
                         <span className="ml-2">{passenger.seatNumber}</span>
@@ -34,7 +37,10 @@ export default function Results({ data }: { data: UpgradeData }) {
                 <h3 className="mb-4 text-center text-lg">Standby</h3>
                 {data.front.standby.map((passenger, i) => {
                   return (
-                    <div className="rounded-sm p-4 odd:bg-black/50" key={i}>
+                    <div
+                      className="rounded-sm p-4 odd:bg-blue-100 dark:odd:bg-black/50"
+                      key={i}
+                    >
                       <p>
                         {passenger.passengerName}
                         {passenger.isCheckedIn && (
@@ -56,12 +62,15 @@ export default function Results({ data }: { data: UpgradeData }) {
               <div>{data.pbts[1].booked} booked</div>
               <div>{data.checkInSummaries[1].total} checked in</div>
             </div>
-            <div className="mt-16 grid gap-4 rounded-md border border-white/20 pt-6 sm:grid-cols-2">
+            <div className="mt-16 grid gap-4 rounded-md border border-blue-200 pt-6 shadow-lg sm:grid-cols-2 dark:border-white/20">
               <div>
                 <h3 className="mb-4 text-center text-lg">Cleared</h3>
                 {data.middle.cleared.map((passenger, i) => {
                   return (
-                    <div className="rounded-sm p-4 even:bg-black/50" key={i}>
+                    <div
+                      className="rounded-sm p-4 even:bg-blue-100 even:dark:bg-black/50"
+                      key={i}
+                    >
                       <p>
                         {passenger.passengerName}
                         <span className="ml-2">{passenger.seatNumber}</span>
@@ -77,7 +86,10 @@ export default function Results({ data }: { data: UpgradeData }) {
                 <h3 className="mb-4 text-center text-lg">Standby</h3>
                 {data.middle.standby.map((passenger, i) => {
                   return (
-                    <div className="rounded-sm p-4 odd:bg-black/50" key={i}>
+                    <div
+                      className="rounded-sm p-4 odd:bg-blue-100 dark:odd:bg-black/50"
+                      key={i}
+                    >
                       <p>
                         {passenger.passengerName}
                         {passenger.isCheckedIn && (
@@ -98,7 +110,7 @@ export default function Results({ data }: { data: UpgradeData }) {
   );
 }
 
-/*
+// eslint-disable-next-line unused-imports/no-unused-vars
 const dummyData = {
   segment: {
     airlineCode: "UA",
@@ -656,5 +668,3 @@ const dummyData = {
   },
   executionTimeInMilliseconds: 119,
 };
-
-*/
