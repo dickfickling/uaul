@@ -92,6 +92,7 @@ export default function Results({ data }: { data: UpgradeData }) {
   );
 }
 
+/*
 const dummyData = {
   segment: {
     airlineCode: "UA",
@@ -649,3 +650,5 @@ const dummyData = {
   },
   executionTimeInMilliseconds: 119,
 };
+
+*/

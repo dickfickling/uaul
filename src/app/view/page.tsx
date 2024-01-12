@@ -24,7 +24,6 @@ export default async function View({
     },
   });
   const data = await response.json();
-  console.log(JSON.stringify(data, null, 2));
 
   return (
     <main className="min-h-screen p-8">
