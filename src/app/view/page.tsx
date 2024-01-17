@@ -1,9 +1,23 @@
 /* eslint-disable no-console */
+import { Metadata } from "next";
 import Results from "../results";
 const TOKEN_URL = "https://www.united.com/api/token/refresh";
 
 // Opt out of caching for all data requests in the route segment
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string };
+}): Promise<Metadata> {
+  const flightNumber = searchParams["flightNumber"];
+  const date = searchParams["date"];
+  const airportCode = searchParams["airportCode"];
+  return {
+    title: `Flight ${flightNumber} on ${date} from ${airportCode}`,
+  };
+}
 
 export default async function View({
   searchParams,
