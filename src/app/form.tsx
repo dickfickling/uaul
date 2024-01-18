@@ -20,11 +20,11 @@ export default function Form() {
   };
 
   const handleChangeFlightNumber = (event: ChangeEvent<HTMLInputElement>) => {
-    setFlightNumber(event.target.value);
+    setFlightNumber(event.target.value.replace(/\D/g, ""));
   };
 
   const handleChangeAirportCode = (event: ChangeEvent<HTMLInputElement>) => {
-    setAirportCode(event.target.value);
+    setAirportCode(event.target.value.toUpperCase());
   };
 
   return (
@@ -51,7 +51,7 @@ export default function Form() {
           type="text"
           value={airportCode}
           onChange={handleChangeAirportCode}
-          placeholder="Departure Airport"
+          placeholder="Departure Airport Code"
           className="mb-4 rounded border border-gray-400 p-2 dark:text-gray-900"
         />
         <button className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700">

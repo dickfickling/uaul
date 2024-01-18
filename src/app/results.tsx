@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { UpgradeData } from "./united";
 
 function ClassSummary({
@@ -71,7 +72,9 @@ function ClassSummary({
 export default function Results({ data }: { data: UpgradeData }) {
   return (
     <div>
-      <h1 className="text-lg">United Airlines Upgrade List</h1>
+      <Link href="/" className="underline">
+        Home
+      </Link>
       {data && (
         <div className="mt-16 grid gap-20 sm:grid-cols-2 sm:gap-8">
           <ClassSummary
