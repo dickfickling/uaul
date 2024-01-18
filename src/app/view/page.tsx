@@ -51,7 +51,7 @@ export default async function View({
     },
   });
   const data = await response.json();
-  console.log("Fetched data...", data);
+  console.log("Fetched data...", url, data);
 
   return (
     <main className="min-h-screen p-8">
