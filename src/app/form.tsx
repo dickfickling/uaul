@@ -35,6 +35,7 @@ export default function Form() {
       >
         <input
           type="date"
+          required
           value={date}
           onChange={handleChangeDate}
           placeholder="Date"
@@ -42,6 +43,7 @@ export default function Form() {
         />
         <input
           type="text"
+          required
           value={flightNumber}
           onChange={handleChangeFlightNumber}
           placeholder="Flight Number"
@@ -49,6 +51,7 @@ export default function Form() {
         />
         <input
           type="text"
+          required
           value={airportCode}
           onChange={handleChangeAirportCode}
           placeholder="Departure Airport Code"
