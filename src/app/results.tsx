@@ -1,109 +1,95 @@
 import { UpgradeData } from "./united";
 
+function ClassSummary({
+  name,
+  seats,
+  booked,
+  checkedIn,
+  cleared,
+  standby,
+}: {
+  name: string;
+  seats: number;
+  booked: number;
+  checkedIn: number;
+  cleared: UpgradeData["front"]["cleared"];
+  standby: UpgradeData["front"]["standby"];
+}) {
+  return (
+    <div>
+      <h2 className="text-4xl">{name}</h2>
+      <div className="mt-4 space-y-1 *:text-sm">
+        <div>{seats} total seats</div>
+        <div>{booked} booked</div>
+        <div>{checkedIn} checked in</div>
+      </div>
+      <div className="mt-16 grid gap-4 rounded-md border border-blue-200 pt-6 shadow-lg sm:grid-cols-2 dark:border-white/20">
+        <div>
+          <h3 className="mb-4 text-center text-lg">Cleared</h3>
+          {cleared.map((passenger, i) => {
+            return (
+              <div
+                className="rounded-sm p-4 odd:bg-blue-100 even:bg-blue-200 odd:dark:bg-black/50 even:dark:bg-white/5"
+                key={i}
+              >
+                <p>
+                  {passenger.passengerName}
+                  <span className="ml-2">{passenger.seatNumber}</span>
+                </p>
+              </div>
+            );
+          })}
+          {cleared.length === 0 && (
+            <div className="p-4 italic opacity-80">(empty)</div>
+          )}
+        </div>
+        <div>
+          <h3 className="mb-4 text-center text-lg">Standby</h3>
+          {standby.map((passenger, i) => {
+            return (
+              <div
+                className="rounded-sm p-4 odd:bg-blue-200 even:bg-blue-100 odd:dark:bg-white/5 even:dark:bg-black/50"
+                key={i}
+              >
+                <p>
+                  {passenger.passengerName}
+                  {passenger.isCheckedIn && (
+                    <span className="pl-2" title="Checked in">
+                      ✓
+                    </span>
+                  )}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Results({ data }: { data: UpgradeData }) {
   return (
     <div>
       <h1 className="text-lg">United Airlines Upgrade List</h1>
       {data && (
         <div className="mt-16 grid gap-20 sm:grid-cols-2 sm:gap-8">
-          <div>
-            <h2 className="text-4xl">Polaris</h2>
-            <div className="mt-4 space-y-1 *:text-sm">
-              <div>{data.checkInSummaries[0].capacity} total seats</div>
-              <div>{data.pbts[0].booked} booked</div>
-              <div>{data.checkInSummaries[0].total} checked in</div>
-            </div>
-            <div className="mt-16 grid gap-4 rounded-md border border-blue-200 pt-6 shadow-lg sm:grid-cols-2 dark:border-white/20">
-              <div>
-                <h3 className="mb-4 text-center text-lg">Cleared</h3>
-                {data.front.cleared.map((passenger, i) => {
-                  return (
-                    <div
-                      className="rounded-sm p-4 even:bg-blue-100 even:dark:bg-black/50"
-                      key={i}
-                    >
-                      <p>
-                        {passenger.passengerName}
-                        <span className="ml-2">{passenger.seatNumber}</span>
-                      </p>
-                    </div>
-                  );
-                })}
-                {data.front.cleared.length === 0 && (
-                  <div className="p-4 italic opacity-80">(empty)</div>
-                )}
-              </div>
-              <div>
-                <h3 className="mb-4 text-center text-lg">Standby</h3>
-                {data.front.standby.map((passenger, i) => {
-                  return (
-                    <div
-                      className="rounded-sm p-4 odd:bg-blue-100 dark:odd:bg-black/50"
-                      key={i}
-                    >
-                      <p>
-                        {passenger.passengerName}
-                        {passenger.isCheckedIn && (
-                          <span className="pl-2" title="Checked in">
-                            ✓
-                          </span>
-                        )}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2 className="text-4xl">Premium Plus</h2>
-            <div className="mt-4 space-y-1 *:text-sm">
-              <div>{data.checkInSummaries[1].capacity} total seats</div>
-              <div>{data.pbts[1].booked} booked</div>
-              <div>{data.checkInSummaries[1].total} checked in</div>
-            </div>
-            <div className="mt-16 grid gap-4 rounded-md border border-blue-200 pt-6 shadow-lg sm:grid-cols-2 dark:border-white/20">
-              <div>
-                <h3 className="mb-4 text-center text-lg">Cleared</h3>
-                {data.middle.cleared.map((passenger, i) => {
-                  return (
-                    <div
-                      className="rounded-sm p-4 even:bg-blue-100 even:dark:bg-black/50"
-                      key={i}
-                    >
-                      <p>
-                        {passenger.passengerName}
-                        <span className="ml-2">{passenger.seatNumber}</span>
-                      </p>
-                    </div>
-                  );
-                })}
-                {data.middle.cleared.length === 0 && (
-                  <div className="p-4 italic opacity-80">(empty)</div>
-                )}
-              </div>
-              <div>
-                <h3 className="mb-4 text-center text-lg">Standby</h3>
-                {data.middle.standby.map((passenger, i) => {
-                  return (
-                    <div
-                      className="rounded-sm p-4 odd:bg-blue-100 dark:odd:bg-black/50"
-                      key={i}
-                    >
-                      <p>
-                        {passenger.passengerName}
-                        {passenger.isCheckedIn && (
-                          <span className="pl-2" title="Checked in">
-                            ✓
-                          </span>
-                        )}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          </div>
+          <ClassSummary
+            name="Polaris"
+            seats={data.checkInSummaries[0].capacity}
+            booked={data.pbts[0].booked}
+            checkedIn={data.checkInSummaries[0].total}
+            cleared={data.front.cleared}
+            standby={data.front.standby}
+          />
+          <ClassSummary
+            name="Premium Plus"
+            seats={data.checkInSummaries[1].capacity}
+            booked={data.pbts[1].booked}
+            checkedIn={data.checkInSummaries[1].total}
+            cleared={data.middle.cleared}
+            standby={data.middle.standby}
+          />
         </div>
       )}
     </div>
