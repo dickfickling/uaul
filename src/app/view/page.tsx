@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { Metadata } from "next";
 import Results from "../results";
+import Amplitude from "../amplitude";
 const TOKEN_URL = "https://www.united.com/api/token/refresh";
 
 // Opt out of caching for all data requests in the route segment
@@ -60,6 +61,10 @@ export default async function View({
   return (
     <main className="min-h-screen p-8">
       <Results data={data} />
+      <Amplitude
+        eventName="view-details"
+        eventProperties={{ flightNumber, date, airportCode }}
+      />
     </main>
   );
 }
