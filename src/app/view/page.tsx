@@ -24,6 +24,9 @@ export default async function View({
 }: {
   searchParams: { [key: string]: string };
 }) {
+  const flightNumber = searchParams["flightNumber"];
+  const date = searchParams["date"];
+  const airportCode = searchParams["airportCode"];
   console.log("Starting view render...");
   const options = {
     method: "GET",
@@ -33,6 +36,7 @@ export default async function View({
         "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
       authority: "www.united.com",
       "accept-language": "en-US",
+      Referer: `https://www.united.com/en/us/flightstatus/details/${flightNumber}/${date}/${airportCode}/LAX/UA`,
     },
   };
 
