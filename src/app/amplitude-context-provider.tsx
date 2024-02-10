@@ -18,6 +18,7 @@ const AmplitudeContextProvider = ({ children }: Props) => {
   useEffect(() => {
     init("433b0f835e7e0dcf68bdb317f1744ef", undefined, {
       defaultTracking: {
+        attribution: true,
         sessions: true,
       },
     });
