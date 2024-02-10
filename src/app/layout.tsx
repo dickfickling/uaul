@@ -16,7 +16,32 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AmplitudeContextProvider>{children}</AmplitudeContextProvider>
+        <AmplitudeContextProvider>
+          <div className="flex min-h-screen flex-col p-8">
+            {children}
+            <div className="flex-1" />
+            <footer className="mt-8 text-center">
+              <div className="text-sm text-gray-500">
+                If you like this or have ideas for other features/tools I should
+                build,{" "}
+                <a
+                  className="text-blue-800 underline"
+                  href="mailto:uaul@d10g.co"
+                >
+                  send me an email.
+                </a>{" "}
+                Or better yet,{" "}
+                <a
+                  className="text-blue-800 underline"
+                  href="mailto:lena+uaul@d10g.co"
+                >
+                  send my wife an email
+                </a>{" "}
+                to tell her to let me keep working on this.
+              </div>
+            </footer>
+          </div>
+        </AmplitudeContextProvider>
       </body>
     </html>
   );

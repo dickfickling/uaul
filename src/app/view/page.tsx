@@ -75,7 +75,7 @@ export default async function View({
     const data = await fetchUpgradeList({ flightNumber, date, airportCode });
     if (data.errors) {
       return (
-        <main className="min-h-screen p-8">
+        <main>
           <ErrorWrapper
             error={data.errors}
             flightNumber={flightNumber}
@@ -86,13 +86,13 @@ export default async function View({
       );
     }
     return (
-      <main className="min-h-screen p-8">
+      <main>
         <Results data={data} />
       </main>
     );
   } catch (err) {
     return (
-      <main className="min-h-screen p-8">
+      <main>
         <ErrorWrapper
           error={serializeError(err)}
           flightNumber={flightNumber}

@@ -24,7 +24,7 @@ export default function ErrorWrapper({
   }, [error, flightNumber, date, airportCode, track]);
 
   return (
-    <main className="min-h-screen p-8">
+    <main className="p-8">
       <h1 className="mb-4 text-2xl font-bold">Error</h1>
       <p>There was an error fetching the upgrade list.</p>
       <div className="text-xs">{JSON.stringify(error, null, 2)}</div>
