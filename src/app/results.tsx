@@ -57,7 +57,7 @@ function ClassSummary({
                 key={i}
               >
                 <p>
-                  {passenger.passengerName}
+                  {i + 1}. {passenger.passengerName}
                   {passenger.isCheckedIn && (
                     <span className="pl-2" title="Checked in">
                       ✓
