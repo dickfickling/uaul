@@ -2,7 +2,13 @@
 import { useEffect, createContext, ReactNode } from "react";
 import { init, track } from "@amplitude/analytics-browser";
 
-export const AmplitudeContext = createContext({});
+export const AmplitudeContext = createContext<{ track: typeof track }>({
+  track: () => {
+    // eslint-disable-next-line no-console
+    console.error("AmplitudeContextProvider not yet initialized");
+    return { promise: Promise.resolve({} as any) };
+  },
+});
 
 interface Props {
   children?: ReactNode;
@@ -17,14 +23,7 @@ const AmplitudeContextProvider = ({ children }: Props) => {
     });
   }, []);
 
-  const trackAmplitudeEvent = (
-    eventName: string,
-    eventProperties: { [key: string]: string },
-  ) => {
-    track(eventName, eventProperties);
-  };
-
-  const value = { trackAmplitudeEvent };
+  const value = { track };
 
   return (
     <AmplitudeContext.Provider value={value}>

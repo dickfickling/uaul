@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { UpgradeData } from "./united";
+import useAmplitudeContext from "./use-amplitude-context";
+import { useEffect } from "react";
 
 function ClassSummary({
   name,
@@ -70,6 +74,12 @@ function ClassSummary({
 }
 
 export default function Results({ data }: { data: UpgradeData }) {
+  const { track } = useAmplitudeContext();
+
+  useEffect(() => {
+    track("Results", { data });
+  }, [data, track]);
+
   return (
     <div>
       <Link href="/" className="underline">
