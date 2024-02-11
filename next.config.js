@@ -2,8 +2,6 @@
 const nextConfig = {
   async redirects() {
     return [
-      // if the host is `example.com`,
-      // this redirect will be applied
       {
         source: "/:path",
         has: [
