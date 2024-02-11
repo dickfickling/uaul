@@ -43,10 +43,15 @@ async function fetchUpgradeList({
       "x-authorization-api": `bearer ${hash}`,
     },
   });
-  const data = await response.json();
-  console.log("Fetched data...", url, data);
-
-  return data;
+  try {
+    const data = await response.json();
+    console.log("Fetched data...", url, JSON.stringify(data, null, 2));
+    return data;
+  } catch (err) {
+    console.error("Error fetching data", serializeError(err));
+    console.error("Error2 fetching data", err);
+    throw err;
+  }
 }
 
 export async function generateMetadata({
