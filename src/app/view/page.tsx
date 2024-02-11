@@ -31,7 +31,16 @@ async function fetchUpgradeList({
 
   const tokenResponse = await fetch(TOKEN_URL, options);
   console.log("Fetched something...");
-  const tokenJson = await tokenResponse.json();
+  let tokenJson: any;
+  try {
+    tokenJson = await tokenResponse.json();
+  } catch (err) {
+    console.error("Error fetching token", serializeError(err));
+    console.error("Error2 fetching token", err);
+    const text = await tokenResponse.text();
+    console.error("Error3 fetching token", text);
+    throw err;
+  }
   const hash = tokenJson.data.token.hash;
   console.log("Fetched token...", hash);
 
