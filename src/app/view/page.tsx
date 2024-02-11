@@ -50,6 +50,8 @@ async function fetchUpgradeList({
   } catch (err) {
     console.error("Error fetching data", serializeError(err));
     console.error("Error2 fetching data", err);
+    const text = await response.text();
+    console.error("Error3 fetching data", text);
     throw err;
   }
 }
