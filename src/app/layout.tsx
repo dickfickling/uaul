@@ -43,8 +43,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 Some people have asked if they can donate or pay for this.
                 I&apos;m keeping it free for now, but if you&apos;ve got Plus
                 Points to spare, I&apos;ve always got upcoming flights that
-                could use an upgrade. 😉 Shoot me an email if you&apos;re
-                feeling generous!
+                could use an upgrade. 😉
+                <a
+                  className="text-blue-800 underline"
+                  href="mailto:uaul+pp@d10g.co"
+                >
+                  Shoot me an email
+                </a>{" "}
+                if you&apos;re feeling generous!
               </div>
             </footer>
           </div>
