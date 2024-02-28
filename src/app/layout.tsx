@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             {children}
             <div className="flex-1" />
             <footer className="mt-8 text-center">
-              <div className="text-sm text-gray-500">
+              <div className="mx-auto max-w-screen-md text-sm text-gray-500">
                 If you like this or have ideas for other features/tools I should
                 build,{" "}
                 <a
@@ -38,6 +38,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   send my wife an email
                 </a>{" "}
                 to tell her to let me keep working on this.
+                <br />
+                <br />
+                Some people have asked if they can donate or pay for this.
+                I&apos;m keeping it free for now, but if you&apos;ve got Plus
+                Points to spare, I&apos;ve always got upcoming flights that
+                could use an upgrade. 😉 Shoot me an email if you&apos;re
+                feeling generous!
               </div>
             </footer>
           </div>
